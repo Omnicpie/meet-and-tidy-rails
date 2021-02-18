@@ -22,6 +22,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Authentication and related security policies
+gem "devise"
 
 # GraphQL for API
 gem "graphql"
