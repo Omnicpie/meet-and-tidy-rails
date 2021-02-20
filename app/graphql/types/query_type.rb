@@ -39,7 +39,7 @@ module Types
 
     def search_events(query:)
       if query.strip.length > 1
-        Event.where("title LIKE ?", "%#{query}%").order(starts_on: :desc).limit(100)
+        Event.where("title LIKE ?", "%#{query}%").order(starts_at: :desc).limit(100)
       else
         Event.none
       end
