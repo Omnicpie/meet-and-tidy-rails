@@ -32,7 +32,7 @@ module Types
       EventType.all
     end
 
-    field :search_events, [Event], null: false do
+    field :search_events, [EventType], null: false do
       description "Events matching query"
       argument :query, String, required: true
     end
