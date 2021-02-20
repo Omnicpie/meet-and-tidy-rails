@@ -5,6 +5,5 @@ class EventType < ApplicationRecord
   has_and_belongs_to_many :events
 
   # Validations
-  validates_presence_of :name
-
+  validates :name, presence: true, uniqueness: {case_sensitive: false}
 end
