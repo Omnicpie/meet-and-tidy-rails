@@ -22,6 +22,7 @@ RSpec.describe "Events admin", type: :request do
       assert_select "form[action='#{admin_events_path}']" do
         assert_select("input[type=text][name='event[title]'][required]")
         assert_select("textarea[name='event[description]'][required]")
+        assert_select("input[type=url][name='event[url]']")
       end
     end
   end
@@ -31,6 +32,7 @@ RSpec.describe "Events admin", type: :request do
       {
         description: "Lots of litter",
         title: "Copley Road Litterpick",
+        url: "https://friendsofcopleyroad.example.org"
       }
     end
 
@@ -43,6 +45,7 @@ RSpec.describe "Events admin", type: :request do
       expect(event).to be
       expect(event.description).to eq "Lots of litter"
       expect(event.title).to eq "Copley Road Litterpick"
+      expect(event.url).to eq "https://friendsofcopleyroad.example.org"
     end
 
     it "redirects to events index" do
