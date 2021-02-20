@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "" => "admin#index", as: :home
     resources :events
+    resources :users
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

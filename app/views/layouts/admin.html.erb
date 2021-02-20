@@ -28,11 +28,15 @@
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item">
-            Home
+            <%= t(".home") %>
           </a>
 
           <a class="navbar-item" href="/admin/events">
-            Events
+            <%= Event.model_name.human(count: 42) %>
+          </a>
+
+          <a class="navbar-item" href="/admin/users">
+            <%= User.model_name.human(count: 42) %>
           </a>
 
           <div class="navbar-item has-dropdown is-hoverable">

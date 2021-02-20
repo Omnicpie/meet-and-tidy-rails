@@ -9,6 +9,7 @@
 Administrator.destroy_all
 Event.destroy_all
 EventType.destroy_all
+User.destroy_all
 
 Administrator.create!(
   email: "tidy@example.com",
@@ -25,6 +26,12 @@ event_type_b = EventType.create!(
 )
 
 Event.create!(
-  name: "Urban Park Clean up!",
+  title: "Urban Park Clean up!",
   event_types: [event_type_a, event_type_b],
+)
+
+User.create!(
+  email: "morty@example.com",
+  name: "Morty",
+  password: "beeblebrox"
 )
