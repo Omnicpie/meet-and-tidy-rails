@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "" => "admin#index", as: :home
+    resources :event_types
     resources :events
     resources :users
   end

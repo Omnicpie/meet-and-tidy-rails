@@ -1,0 +1,29 @@
+<section class="section">
+  <div class="container">
+    <div class="block buttons">
+      <%= link_to t("add"), new_admin_event_type_path, class: "button is-primary" %>
+    </div>
+    <h1 class="title"><%= EventType.model_name.human(count: 42) %></h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= EventType.human_attribute_name :name %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @event_types.each do |event_type| %>
+          <tr>
+            <td><%= event_type %></td>
+            <td>
+              <div class="buttons">
+                <%= link_to t("edit"), edit_admin_event_type_path(event_type), class: "button is-small" %>
+                <%= link_to t("delete"), admin_event_type_path(event_type), data: {confirm: t("confirm_delete")}, method: :delete, class: "button is-small is-danger" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

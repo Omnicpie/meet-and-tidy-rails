@@ -17,6 +17,15 @@ Administrator.create!(
   password: "top-secret"
 )
 
+EventType.create!([
+  {name: "Beach"},
+  {name: "Canal"},
+  {name: "Cemetery"},
+  {name: "Other"},
+  {name: "Street"},
+  {name: "Woodland"}
+])
+
 event_type_a = EventType.create!(
   name: "Park"
 )
