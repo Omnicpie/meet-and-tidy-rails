@@ -10,6 +10,10 @@ class Event < ApplicationRecord
   # Validations
   validates_presence_of :title
 
+  def to_s
+    title
+  end
+
   def image_urls
     images.map { |img| url_for(img) if img.present? }.compact
   end
