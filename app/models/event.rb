@@ -5,6 +5,5 @@ class Event < ApplicationRecord
   has_and_belongs_to_many :event_types
 
   # Validations
-  validates_presence_of :name
-
+  validates_presence_of :title
 end
