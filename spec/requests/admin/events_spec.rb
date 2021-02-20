@@ -20,9 +20,8 @@ RSpec.describe "Events admin", type: :request do
     it "renders a form for a new event" do
       get "/admin/events/new"
       assert_select "form[action='#{admin_events_path}']" do
-        assert_select(
-          "input[type=text][name='event[title]'][required]"
-        )
+        assert_select("input[type=text][name='event[title]'][required]")
+        assert_select("textarea[name='event[description]'][required]")
       end
     end
   end
@@ -30,7 +29,8 @@ RSpec.describe "Events admin", type: :request do
   describe "POST /admin/events" do
     let(:params) do
       {
-        title: "Copley Road Litterpick"
+        description: "Lots of litter",
+        title: "Copley Road Litterpick",
       }
     end
 
@@ -41,6 +41,7 @@ RSpec.describe "Events admin", type: :request do
     it "creates a new event" do
       event = Event.last
       expect(event).to be
+      expect(event.description).to eq "Lots of litter"
       expect(event.title).to eq "Copley Road Litterpick"
     end
 
@@ -66,18 +67,19 @@ RSpec.describe "Events admin", type: :request do
     context "with valid params" do
       before do
         @event = FactoryBot.create(
-          :event, title: "Locke Park Cleanup"
+          :event, description: "Old desc", title: "Locke Park Cleanup"
         )
         patch(
           "/admin/events/#{@event.id}",
           params: {
-            event: {title: "Cleethorpes Beach Cleanup"}
+            event: {description: "New desc", title: "Cleethorpes Beach Cleanup"}
           }
         )
       end
 
       it "updates the event" do
         @event.reload
+        expect(@event.description).to eq "New desc"
         expect(@event.title).to eq "Cleethorpes Beach Cleanup"
       end
 
