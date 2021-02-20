@@ -6,8 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Administrator.destroy_all
 Event.destroy_all
 EventType.destroy_all
+
+Administrator.create!(
+  email: "tidy@example.com",
+  name: "Tidy",
+  password: "top-secret"
+)
 
 event_type_a = EventType.create!(
   name: "Park"
