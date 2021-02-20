@@ -30,4 +30,12 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      event:
+        one: "Event"
+        other: "Events"
+  add: "Add"
+  confirm_delete: "Are you sure you want to delete this?"
+  delete: "Delete"
+  edit: "Edit"
