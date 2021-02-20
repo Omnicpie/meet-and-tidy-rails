@@ -25,6 +25,9 @@ gem 'jbuilder', '~> 2.7'
 # Authentication and related security policies
 gem "devise"
 
+# Configure CORS
+gem "rack-cors"
+
 # GraphQL for API
 gem "graphql"
 
