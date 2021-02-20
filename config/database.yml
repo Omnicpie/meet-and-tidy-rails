@@ -50,7 +50,7 @@ test:
 #
 production:
   <<: *default
-  host: 10.131.0.4
+  host: 10.131.0.3
   database: meet_and_tidy_rails_production
   username: meet_and_tidy
   password: <%= Rails.application.credentials.mysql_password %>
