@@ -2,10 +2,11 @@
 lock "~> 3.15.0"
 
 set :application, "meet_and_tidy"
-set :repo_url, "git@bitbucket.org:commitdigital/meet-and-tidy-rails.git"
+set :repo_url, "git@github.com:commitdigital/meet-and-tidy-rails.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :branch, ENV["BRANCH"] || "main"
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, "/var/www/my_app_name"
