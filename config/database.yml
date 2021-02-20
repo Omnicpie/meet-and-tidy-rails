@@ -52,4 +52,4 @@ production:
   <<: *default
   database: meet_and_tidy_rails_production
   username: meet_and_tidy_rails
-  password: <%= ENV['MEET_AND_TIDY_RAILS_DATABASE_PASSWORD'] %>
+  password: <%= Rails.application.credentials.mysql_password %>

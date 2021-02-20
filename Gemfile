@@ -60,6 +60,12 @@ group :development do
   # Automatically & intelligently launch specs when files are modified
   gem "guard-rspec", require: false
 
+  # Use Capistrano for deployment
+  gem "capistrano", "~> 3.10", require: false
+  gem "capistrano-rails", "~> 1.6", require: false
+  gem "capistrano-rvm", git: "https://github.com/capistrano/rvm.git"
+  gem "capistrano3-puma", require: false
+
   gem "graphiql-rails"
 end
 
