@@ -10,5 +10,6 @@ module Types
 
     field :event_types, [EventTypeType], null: true
 
+    field :image_urls, [String], null: true
   end
 end
