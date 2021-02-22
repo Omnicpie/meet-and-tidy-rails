@@ -1,0 +1,29 @@
+<section class="section">
+  <div class="container">
+    <div class="block buttons">
+      <%= link_to t("add"), new_admin_facility_path, class: "button is-primary" %>
+    </div>
+    <h1 class="title"><%= Facility.model_name.human(count: 42) %></h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= Facility.human_attribute_name :name %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @facilities.each do |facility| %>
+          <tr>
+            <td><%= facility %></td>
+            <td>
+              <div class="buttons">
+                <%= link_to t("edit"), edit_admin_facility_path(facility), class: "button is-small" %>
+                <%= link_to t("delete"), admin_facility_path(facility), data: {confirm: t("confirm_delete")}, method: :delete, class: "button is-small is-danger" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
