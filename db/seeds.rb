@@ -9,6 +9,7 @@
 Administrator.destroy_all
 Event.destroy_all
 EventType.destroy_all
+Facility.destroy_all
 User.destroy_all
 
 Administrator.create!(
