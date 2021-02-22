@@ -1,6 +1,6 @@
 module Admin
   class EventsController < AdminController
-    before_action :set_event, except: [:index, :new, :create]
+    before_action :set_event, only: [:edit, :update, :destroy]
 
     def index
       @events = Event.order(:title)
@@ -41,8 +41,7 @@ module Admin
     private
 
     def set_event
-      @event = Event.find_by(id: params[:id])
-      not_found unless @event
+      @event = Event.find(params[:id])
     end
 
     def event_params

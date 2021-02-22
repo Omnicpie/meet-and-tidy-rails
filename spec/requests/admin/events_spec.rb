@@ -64,6 +64,13 @@ RSpec.describe "Events admin", type: :request do
       get "/admin/events/#{event.id}/edit"
       assert_select "form[action='#{admin_event_path(event)}']"
     end
+
+    context "when event does not exist" do
+      it "raises an error" do
+        expect { get "/admin/events/1/edit" }
+          .to raise_error ActiveRecord::RecordNotFound
+      end
+    end
   end
 
   describe "PATCH /admin/events/:id" do
@@ -90,22 +97,38 @@ RSpec.describe "Events admin", type: :request do
         expect(response).to redirect_to admin_events_path
       end
     end
+
+    context "when event does not exist" do
+      it "raises an error" do
+        expect { patch("/admin/events/1", params: {}) }
+          .to raise_error ActiveRecord::RecordNotFound
+      end
+    end
   end
 
   describe "DELETE /admin/events/:id" do
-    let(:event) { FactoryBot.create(:event) }
-    before { delete "/admin/events/#{event.id}" }
+    context "when event exists" do
+      let(:event) { FactoryBot.create(:event) }
+      before { delete "/admin/events/#{event.id}" }
 
-    it "destroys the event" do
-      expect(Event.exists?(event.id)).to be_falsey
+      it "destroys the event" do
+        expect(Event.exists?(event.id)).to be_falsey
+      end
+
+      it "redirects to events index" do
+        expect(response).to redirect_to admin_events_path
+      end
+
+      it "sets a flash notice" do
+        expect(flash[:notice]).to eq "Event deleted."
+      end
     end
 
-    it "redirects to events index" do
-      expect(response).to redirect_to admin_events_path
-    end
-
-    it "sets a flash notice" do
-      expect(flash[:notice]).to eq "Event deleted."
+    context "when event does not exist" do
+      it "raises an error" do
+        expect { delete("/admin/events/1") }
+          .to raise_error ActiveRecord::RecordNotFound
+      end
     end
   end
 end
