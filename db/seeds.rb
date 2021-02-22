@@ -39,6 +39,21 @@ Event.create!(
   event_types: [event_type_a, event_type_b],
 )
 
+Facility.create!([
+  {name: "Toilets"},
+  {name: "Parking"},
+  {name: "First aiders"},
+  {name: "Transport routes"},
+])
+
+facility_a = Facility.create!(
+  name: "Disabled access"
+)
+
+facility_b = Facility.create!(
+  name: "Child friendly"
+)
+
 User.create!(
   email: "morty@example.com",
   name: "Morty",
