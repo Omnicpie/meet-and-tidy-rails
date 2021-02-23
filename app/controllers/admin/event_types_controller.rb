@@ -1,6 +1,6 @@
 module Admin
   class EventTypesController < AdminController
-    before_action :set_event_type, except: [:index, :new, :create]
+    before_action :set_event_type, only: [:edit, :update, :destroy]
 
     def index
       @event_types = EventType.order(:name)
@@ -41,8 +41,7 @@ module Admin
     private
 
     def set_event_type
-      @event_type = EventType.find_by(id: params[:id])
-      not_found unless @event_type
+      @event_type = EventType.find(params[:id])
     end
 
     def event_type_params

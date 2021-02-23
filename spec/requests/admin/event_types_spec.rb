@@ -58,6 +58,13 @@ RSpec.describe "Event types admin", type: :request do
       get "/admin/event_types/#{event_type.id}/edit"
       assert_select "form[action='#{admin_event_type_path(event_type)}']"
     end
+
+    context "when event type does not exist" do
+      it "raises an error" do
+        expect { get "/admin/event_types/1/edit" }
+          .to raise_error ActiveRecord::RecordNotFound
+      end
+    end
   end
 
   describe "PATCH /admin/event_types/:id" do
@@ -83,22 +90,38 @@ RSpec.describe "Event types admin", type: :request do
         expect(response).to redirect_to admin_event_types_path
       end
     end
+
+    context "when event type does not exist" do
+      it "raises an error" do
+        expect { patch("/admin/event_types/1", params: {}) }
+          .to raise_error ActiveRecord::RecordNotFound
+      end
+    end
   end
 
   describe "DELETE /admin/event_types/:id" do
-    let(:event_type) { FactoryBot.create(:event_type) }
-    before { delete "/admin/event_types/#{event_type.id}" }
+    context "when event type exists" do
+      let(:event_type) { FactoryBot.create(:event_type) }
+      before { delete "/admin/event_types/#{event_type.id}" }
 
-    it "destroys the event type" do
-      expect(EventType.exists?(event_type.id)).to be_falsey
+      it "destroys the event type" do
+        expect(EventType.exists?(event_type.id)).to be_falsey
+      end
+
+      it "redirects to event types index" do
+        expect(response).to redirect_to admin_event_types_path
+      end
+
+      it "sets a flash notice" do
+        expect(flash[:notice]).to eq "Event type deleted."
+      end
     end
 
-    it "redirects to event types index" do
-      expect(response).to redirect_to admin_event_types_path
-    end
-
-    it "sets a flash notice" do
-      expect(flash[:notice]).to eq "Event type deleted."
+    context "when event type does not exist" do
+      it "raises an error" do
+        expect { delete("/admin/event_types/1") }
+          .to raise_error ActiveRecord::RecordNotFound
+      end
     end
   end
 end
