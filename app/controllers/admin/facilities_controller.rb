@@ -1,6 +1,6 @@
 module Admin
   class FacilitiesController < AdminController
-    before_action :set_facility, except: [:index, :new, :create]
+    before_action :set_facility, only: [:edit, :update, :destroy]
 
     def index
       @facilities = Facility.order(:name)
@@ -41,8 +41,7 @@ module Admin
     private
 
     def set_facility
-      @facility = Facility.find_by(id: params[:id])
-      not_found unless @facility
+      @facility = Facility.find(params[:id])
     end
 
     def facility_params

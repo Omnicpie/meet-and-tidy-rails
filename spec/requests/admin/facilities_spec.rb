@@ -58,6 +58,13 @@ RSpec.describe "Facilities admin", type: :request do
       get "/admin/facilities/#{facility.id}/edit"
       assert_select "form[action='#{admin_facility_path(facility)}']"
     end
+
+    context "when facility does not exist" do
+      it "raises an error" do
+        expect { get "/admin/facilities/1/edit" }
+          .to raise_error ActiveRecord::RecordNotFound
+      end
+    end
   end
 
   describe "PATCH /admin/facilities/:id" do
@@ -83,22 +90,38 @@ RSpec.describe "Facilities admin", type: :request do
         expect(response).to redirect_to admin_facilities_path
       end
     end
+
+    context "when facility does not exist" do
+      it "raises an error" do
+        expect { patch("/admin/facilities/1", params: {}) }
+          .to raise_error ActiveRecord::RecordNotFound
+      end
+    end
   end
 
   describe "DELETE /admin/facilities/:id" do
-    let(:facility) { FactoryBot.create(:facility) }
-    before { delete "/admin/facilities/#{facility.id}" }
+    context "when facility exists" do
+      let(:facility) { FactoryBot.create(:facility) }
+      before { delete "/admin/facilities/#{facility.id}" }
 
-    it "destroys the facility" do
-      expect(Facility.exists?(facility.id)).to be_falsey
+      it "destroys the facility" do
+        expect(Facility.exists?(facility.id)).to be_falsey
+      end
+
+      it "redirects to facilities index" do
+        expect(response).to redirect_to admin_facilities_path
+      end
+
+      it "sets a flash notice" do
+        expect(flash[:notice]).to eq "Facility deleted."
+      end
     end
 
-    it "redirects to facilities index" do
-      expect(response).to redirect_to admin_facilities_path
-    end
-
-    it "sets a flash notice" do
-      expect(flash[:notice]).to eq "Facility deleted."
+    context "when facility does not exist" do
+      it "raises an error" do
+        expect { delete("/admin/facilities/1") }
+          .to raise_error ActiveRecord::RecordNotFound
+      end
     end
   end
 end
