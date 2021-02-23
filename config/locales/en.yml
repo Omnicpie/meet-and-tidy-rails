@@ -35,6 +35,9 @@ en:
       event:
         one: "Event"
         other: "Events"
+      facility:
+        one: "Facility"
+        other: "Facilities"
       user:
         one: "User"
         other: "Users"
