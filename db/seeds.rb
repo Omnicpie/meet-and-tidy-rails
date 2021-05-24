@@ -19,7 +19,6 @@ Administrator.create!(
 )
 
 EventType.create!([
-  {name: "Beach"},
   {name: "Canal"},
   {name: "Cemetery"},
   {name: "Other"},
@@ -35,9 +34,8 @@ event_type_b = EventType.create!(
   name: "Urban"
 )
 
-Event.create!(
-  title: "Urban Park Clean up!",
-  event_types: [event_type_a, event_type_b],
+event_type_c = EventType.create!(
+  name: "Beach"
 )
 
 Facility.create!([
@@ -55,8 +53,38 @@ facility_b = Facility.create!(
   name: "Child friendly"
 )
 
+Event.create!(
+  title: "Urban Park Clean up!",
+  event_types: [event_type_a, event_type_b],
+  description: "A chance to clean up our local streets and give back to the community.",
+  location: "Leeds",
+  date: 11-06-2021,
+)
+
+Event.create!(
+  title: "Redcar Beach Clean up!",
+  event_types: [event_type_c],
+  description: "Time to do your part and clean up the beach!",
+  location: "Redcar",
+  date: 03-02-2021,
+)
+
+Event.create!(
+  title: "West Park Clean up!",
+  event_types: [event_type_a],
+  description: "A chance to clean up our local streets and give back to the community.",
+  location: "Goole",
+  date: 09-12-2021,
+)
+
 User.create!(
   email: "morty@example.com",
   name: "Morty",
+  password: "beeblebrox"
+)
+
+User.create!(
+  email: "pam@example.com",
+  name: "Pam",
   password: "beeblebrox"
 )
