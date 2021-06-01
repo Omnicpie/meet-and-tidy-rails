@@ -59,6 +59,7 @@ Event.create!(
   description: "A chance to clean up our local streets and give back to the community.",
   location: "Leeds",
   date: 11-06-2021,
+  url: "https://www.google.com"
 )
 
 Event.create!(
@@ -66,7 +67,8 @@ Event.create!(
   event_types: [event_type_c],
   description: "Time to do your part and clean up the beach!",
   location: "Redcar",
-  date: 03-02-2021,
+  date: 15-12-2021,
+  url: "https://www.google.com"
 )
 
 Event.create!(
@@ -74,7 +76,8 @@ Event.create!(
   event_types: [event_type_a],
   description: "A chance to clean up our local streets and give back to the community.",
   location: "Goole",
-  date: 09-12-2021,
+  date: 23-9-2021,
+  url: "https://www.google.com"
 )
 
 User.create!(
