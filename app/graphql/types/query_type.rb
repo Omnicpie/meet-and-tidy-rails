@@ -64,5 +64,27 @@ module Types
     def messes
       Mess.all
     end
+
+  # mess types
+    field :mess_types, [MessTypeType], null: true do
+      description "All mess types"
+    end
+
+    def mess_types
+      MessType.all
+    end
+
+    field :search_messes, [MessType], null: false do
+      description "Messes matching query"
+      argument :query, String, required: true
+    end
+
+    def search_messes(query:)
+      if query.strip.length > 1
+        Mess.where("title LIKE ?", "%#{query}%").order(created_at: :desc).limit(100)
+      else
+        Mess.none
+      end
+    end
   end
 end
