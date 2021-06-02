@@ -5,10 +5,10 @@ class Mess < ApplicationRecord
   has_many_attached :images
 
   # Validations
-  validates_presence_of :name
+  validates_presence_of :title
 
   def to_s
-    name
+    title
   end
 
   def image_urls

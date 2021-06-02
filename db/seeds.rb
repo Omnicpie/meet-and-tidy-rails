@@ -94,7 +94,7 @@ User.create!(
 )
 
 Mess.create!(
-  name: "Bin bags on George St",
+  title: "Bin bags on George St",
   description: "Someone has left all their rubbish on George Street and it needs cleaning up.",
   location: "George Street"
 )
