@@ -7,6 +7,7 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
+  # events
     field :event, EventType, null: true do
       description "Find an event by ID"
       argument :id, ID, required: true
@@ -24,6 +25,7 @@ module Types
       Event.all
     end
 
+  # event types
     field :event_types, [EventTypeType], null: true do
       description "All event types"
     end
@@ -43,6 +45,24 @@ module Types
       else
         Event.none
       end
+    end
+
+  # messes
+    field :mess, MessType, null: true do
+      description "Find an mess by ID"
+      argument :id, ID, required: true
+    end
+
+    def mess(id:)
+      Mess.find(id)
+    end
+
+    field :messes, [MessType], null: true do
+      description "All messes"
+    end
+
+    def messes
+      Mess.all
     end
   end
 end
