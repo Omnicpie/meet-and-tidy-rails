@@ -1,0 +1,33 @@
+<section class="section">
+  <div class="container">
+    <div class="block buttons">
+      <%= link_to t("add"), new_admin_mess_path, class: "button is-primary" %>
+    </div>
+    <h1 class="title"><%= Mess.model_name.human(count: 42) %></h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= Mess.human_attribute_name :name %></th>
+          <th>Loction</th>
+          <th>Logged at</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @messes.each do |mess| %>
+          <tr>
+            <td><%= mess.name %></td>
+            <td><%= mess.location %></td>
+            <td><%= mess.created_at %></td>
+            <td>
+              <div class="buttons">
+                <%= link_to t("edit"), edit_admin_mess_path(mess), class: "button is-small" %>
+                <%= link_to t("delete"), admin_messes_path(mess), data: {confirm: t("confirm_delete")}, method: :delete, class: "button is-small is-danger" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

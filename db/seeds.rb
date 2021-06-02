@@ -10,6 +10,7 @@ Administrator.destroy_all
 Event.destroy_all
 EventType.destroy_all
 Facility.destroy_all
+Mess.destroy_all
 User.destroy_all
 
 Administrator.create!(
@@ -90,4 +91,10 @@ User.create!(
   email: "pam@example.com",
   name: "Pam",
   password: "beeblebrox"
+)
+
+Mess.create!(
+  name: "Bin bags on George St",
+  description: "Someone has left all their rubbish on George Street and it needs cleaning up.",
+  location: "George Street"
 )

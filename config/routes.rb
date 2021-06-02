@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :event_types
     resources :events
     resources :facilities
+    resources :messes
     resources :users
   end
 
