@@ -142,9 +142,9 @@ end
 # ActiveStorage attachments
 event_1.images.attach(io: File.open(path_for_image("urban.jpg")), filename: "urban.jpg")
 event_1.save!
-event_2.images.attach(io: File.open(path_for_image("west_park.jpg")), filename: "west_park.jpg")
+event_2.images.attach(io: File.open(path_for_image("redcar.jpg")), filename: "redcar.jpg")
 event_2.save!
-event_3.images.attach(io: File.open(path_for_image("redcar.jpg")), filename: "redcar.jpg")
+event_3.images.attach(io: File.open(path_for_image("west_park.jpg")), filename: "west_park.jpg")
 event_3.save!
 mess_1.images.attach(io: File.open(path_for_image("rubbish.jpg")), filename: "rubbish.jpg")
 mess_1.save!
