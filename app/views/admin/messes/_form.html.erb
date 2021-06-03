@@ -1,5 +1,5 @@
 <% if @mess.errors.any? %>
-<h2><%= pluralize(@mess.errors.count, "error") %> prmessed this mess from being saved:</h2>
+<h2><%= pluralize(@mess.errors.count, "error") %> preveneted this mess from being saved:</h2>
 <ul>
   <% @mess.errors.full_messages.each do |msg| %>
   <li><%= msg %></li>
@@ -9,9 +9,9 @@
 
 <%= form_with model: [:admin, @mess], local: true do |f| %>
   <div class="field">
-    <%= f.label :name, class: "label" %>
+    <%= f.label :title, class: "label" %>
     <div class="control">
-      <%= f.text_field :name, required: true, class: "input" %>
+      <%= f.text_field :title, required: true, class: "input" %>
     </div>
   </div>
 

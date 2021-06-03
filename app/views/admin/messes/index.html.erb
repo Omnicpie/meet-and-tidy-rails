@@ -7,7 +7,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th><%= Mess.human_attribute_name :name %></th>
+          <th><%= Mess.human_attribute_name :title %></th>
           <th>Loction</th>
           <th>Logged at</th>
           <th></th>
@@ -16,7 +16,7 @@
       <tbody>
         <% @messes.each do |mess| %>
           <tr>
-            <td><%= mess.name %></td>
+            <td><%= mess.title %></td>
             <td><%= mess.location %></td>
             <td><%= mess.created_at %></td>
             <td>
