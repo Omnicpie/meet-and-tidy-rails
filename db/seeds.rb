@@ -133,7 +133,7 @@ mess_2 = Mess.create!(
   location: "Doncaster"
 )
 
-puts "\n== handinling active images =="
+puts "\n== handling active images =="
 
 def path_for_image(filename)
   "app/assets/images/#{filename}"
