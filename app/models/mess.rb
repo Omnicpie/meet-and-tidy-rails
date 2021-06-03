@@ -4,6 +4,9 @@ class Mess < ApplicationRecord
   # Active Storage
   has_many_attached :images
 
+  # Associations
+  has_and_belongs_to_many :mess_types
+
   # Validations
   validates_presence_of :title
 
