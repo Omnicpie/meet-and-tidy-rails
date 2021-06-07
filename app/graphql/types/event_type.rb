@@ -9,7 +9,7 @@ module Types
 
     field :description, String, null: true
 
-    field :event_types, [EventTypeType], null: true
+    field :event_type, [EventTypeType], null: true
 
     field :image_urls, [String], null: true
   end

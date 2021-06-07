@@ -26,14 +26,24 @@ module Types
     end
 
   # event types
+    field :event_type, EventTypeType, null: true do
+      description "Find a event type by name"
+      argument :id, ID, required: true
+    end
+
+    def event_type(id:)
+      EventType.find_by(name: "Park")
+    end
+
     field :event_types, [EventTypeType], null: true do
       description "All event types"
     end
 
     def event_types
-      EventType.all
+      ::EventType.all
     end
 
+  # event search
     field :search_events, [EventType], null: false do
       description "Events matching query"
       argument :query, String, required: true
@@ -66,19 +76,24 @@ module Types
     end
 
   # mess types
+    field :mess_type, MessTypeType, null: true do
+      description "Find a mess type by name"
+      argument :id, ID, required: true
+    end
+
+    def mess_type(id:)
+      MessType.find_by(name: "Park")
+    end
+
     field :mess_types, [MessTypeType], null: true do
       description "All mess types"
     end
 
     def mess_types
-      MessType.all
+      ::MessType.all
     end
 
-    field :search_messes, [MessType], null: false do
-      description "Messes matching query"
-      argument :query, String, required: true
-    end
-
+  # search mess
     def search_messes(query:)
       if query.strip.length > 1
         Mess.where("title LIKE ?", "%#{query}%").order(created_at: :desc).limit(100)

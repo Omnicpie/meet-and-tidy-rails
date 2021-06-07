@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   has_many_attached :images
 
   # Associations
-  has_and_belongs_to_many :event_types
+  belongs_to :event_types
   has_and_belongs_to_many :facilities
 
   # Validations
