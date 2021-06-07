@@ -11,6 +11,7 @@ Event.destroy_all
 EventType.destroy_all
 Facility.destroy_all
 Mess.destroy_all
+MessType.destroy_all
 User.destroy_all
 
 puts "\n== Creating admins =="
@@ -26,13 +27,13 @@ puts "\n== Creating users =="
 User.create!(
   email: "morty@example.com",
   name: "Morty",
-  password: "beeblebrox"
+  password: "secret123"
 )
 
 User.create!(
   email: "pam@example.com",
   name: "Pam",
-  password: "beeblebrox"
+  password: "secret123"
 )
 
 puts "\n== Creating event types =="
@@ -76,10 +77,11 @@ facility_b = Facility.create!(
 
 puts "\n== Creating events =="
 
-event_1 = Event.create!(
+event_1 = Event.create!
   title: "Urban Park Clean up!",
-  event_types: [event_type_a, event_type_b],
+  event_types: event_type_a,
   description: "A chance to clean up our local streets and give back to the community.",
+  facilities: [facility_a, facility_b],
   location: "Leeds",
   date: 11-06-2021,
   url: "https://www.google.com",
@@ -87,8 +89,9 @@ event_1 = Event.create!(
 
 event_2 = Event.create!(
   title: "Redcar Beach Clean up!",
-  event_types: [event_type_c],
+  event_type: event_type_c,
   description: "Time to do your part and clean up the beach!",
+  facilities: [facility_a],
   location: "Redcar",
   date: 15-12-2021,
   url: "https://www.google.com",
@@ -96,42 +99,51 @@ event_2 = Event.create!(
 
 event_3 = Event.create!(
   title: "West Park Clean up!",
-  event_types: [event_type_a],
+  event_type: event_type_a,
   description: "A chance to clean up our local streets and give back to the community.",
+  facilities: [facility_b, facility_c],
   location: "Goole",
   date: 23-9-2021,
   url: "https://www.google.com",
 )
 
-# puts "\n== Creating mess types =="
+puts "\n== Creating mess types =="
 
-# mess_type_a = MessType.create!(
-#   name: "Fly-tip"
-# )
+MessType.create!([
+  {name: "Canal"},
+  {name: "Cemetery"},
+  {name: "Other"},
+  {name: "Street"},
+  {name: "Woodland"}
+])
 
-# mess_type_b = MessType.create!(
-#   name: "Rubbish"
-# )
-
-# mess_type_c = MessType.create!(
-#   name: "Other"
-# )
-
-puts "\n== Creating messes =="
-
-mess_1 = Mess.create!(
-  title: "Bin bags on George St",
-  # mess_types: [mess_type_b],
-  description: "Someone has left all their rubbish on George Street and it needs cleaning up.",
-  location: "George Street"
+mess_type_a = MessType.create!(
+  name: "Fly-tip"
 )
 
-mess_2 = Mess.create!(
-  title: "Fly-tip in alley",
-  # mess_types: [mess_type_a],
-  description: "Massive fly-tip on the alley between Carilse and Smitth street.",
-  location: "Doncaster"
+mess_type_b = MessType.create!(
+  name: "Rubbish"
 )
+
+mess_type_c = MessType.create!(
+  name: "Other"
+)
+
+# puts "\n== Creating messes =="
+
+# mess_1 = Mess.create!(
+#   title: "Bin bags on George St",
+#   mess_types: mess_type_b,
+#   description: "Someone has left all their rubbish on George Street and it needs cleaning up.",
+#   location: "George Street"
+# )
+
+# mess_2 = Mess.create!(
+#   title: "Fly-tip in alley",
+#   mess_types: mess_type_a,
+#   description: "Massive fly-tip on the alley between Carilse and Smitth street.",
+#   location: "Doncaster"
+# )
 
 puts "\n== handling active images =="
 
