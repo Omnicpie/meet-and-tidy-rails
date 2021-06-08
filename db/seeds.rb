@@ -77,7 +77,7 @@ facility_b = Facility.create!(
 
 puts "\n== Creating events =="
 
-event_1 = Event.create!
+event_1 = Event.create!(
   title: "Urban Park Clean up!",
   event_types: event_type_a,
   description: "A chance to clean up our local streets and give back to the community.",
