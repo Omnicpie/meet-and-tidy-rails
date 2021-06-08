@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe EventType, type: :model do
   describe "associations" do
-    it { should have_and_belong_to_many :events }
+    it { should have_many :events }
   end
 
   describe "validations" do
