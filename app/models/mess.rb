@@ -5,7 +5,7 @@ class Mess < ApplicationRecord
   has_many_attached :images
 
   # Associations
-  has_and_belongs_to_many :mess_types
+  belongs_to :mess_type
 
   # Validations
   validates_presence_of :title

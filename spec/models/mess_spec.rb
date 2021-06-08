@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe Mess, type: :model do
   describe "Active Storage" do
     it { should have_many_attached :images }
+    it { should belong_to :mess_type }
   end
 
   describe "#to_s" do

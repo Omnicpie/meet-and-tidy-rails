@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe MessType, type: :model do
   describe "associations" do
-    it { should have_and_belong_to_many :messes }
+    it { should have_many :messes }
   end
 
   describe "validations" do
