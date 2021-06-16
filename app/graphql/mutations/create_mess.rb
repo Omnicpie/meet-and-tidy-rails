@@ -1,9 +1,9 @@
 class Mutations::CreateMess < Mutations::BaseMutation
   null true
 
-  argument :description, String
-  argument :location, String
-  argument :title, String, required: false
+  argument :description, String, required: false
+  argument :location, String, required: false
+  argument :title, String, required: true
 
   field :errors, [String], null: false
 
