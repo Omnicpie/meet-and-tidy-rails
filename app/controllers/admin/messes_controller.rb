@@ -46,7 +46,7 @@ module Admin
 
     def mess_params
       params.require(:mess).permit(
-        :description, :location, :title
+        :description, :location, :mess_type_id, :title
       )
     end
   end
