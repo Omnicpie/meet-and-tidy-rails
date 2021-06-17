@@ -46,7 +46,7 @@ module Admin
 
     def event_params
       params.require(:event).permit(
-        :description, :title, :url
+        :description, :event_type_id, :title, :url
       )
     end
   end

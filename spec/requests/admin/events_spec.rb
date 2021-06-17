@@ -7,8 +7,11 @@ RSpec.describe "Events admin", type: :request do
 
   describe "GET /admin/events" do
     it "lists all events" do
-      FactoryBot.create(:event, title: "Locke Park Cleanup")
-      FactoryBot.create(:event, title: "Cleethorpes Beach Cleanup")
+      event_type_1 = FactoryBot.create(:event_type, name: "Park")
+      event_1 = FactoryBot.create(:event, title: "Locke Park Cleanup", event_type: event_type_1)
+
+      event_type_2 = FactoryBot.create(:event_type, name: "Beach")
+      event_2 = FactoryBot.create(:event, title: "Cleethorpes Beach Cleanup", event_type: event_type_2)
 
       get "/admin/events"
       expect(response.body).to include("Locke Park Cleanup")
@@ -28,11 +31,14 @@ RSpec.describe "Events admin", type: :request do
   end
 
   describe "POST /admin/events" do
+    let!(:event_type) { FactoryBot.create(:event_type) }
+
     let(:params) do
       {
         description: "Lots of litter",
         title: "Copley Road Litterpick",
-        url: "https://friendsofcopleyroad.example.org"
+        url: "https://friendsofcopleyroad.example.org",
+        event_type_id: event_type.id,
       }
     end
 
@@ -58,7 +64,9 @@ RSpec.describe "Events admin", type: :request do
   end
 
   describe "GET /admin/events/:id/edit" do
-    let(:event) { FactoryBot.create(:event) }
+    let(:event_type) { FactoryBot.create(:event_type) }
+    let(:event_type_id) { event_type.id }
+    let(:event) { FactoryBot.create(:event, event_type: event_type) }
 
     it "renders a form to edit the event" do
       get "/admin/events/#{event.id}/edit"
@@ -76,13 +84,15 @@ RSpec.describe "Events admin", type: :request do
   describe "PATCH /admin/events/:id" do
     context "with valid params" do
       before do
+        event_type = FactoryBot.create(:event_type)
+
         @event = FactoryBot.create(
-          :event, description: "Old desc", title: "Locke Park Cleanup"
+          :event, description: "Old desc", title: "Locke Park Cleanup", event_type_id: event_type.id,
         )
         patch(
           "/admin/events/#{@event.id}",
           params: {
-            event: {description: "New desc", title: "Cleethorpes Beach Cleanup"}
+            event: {description: "New desc", title: "Cleethorpes Beach Cleanup", event_type_id: event_type.id}
           }
         )
       end
@@ -108,7 +118,9 @@ RSpec.describe "Events admin", type: :request do
 
   describe "DELETE /admin/events/:id" do
     context "when event exists" do
-      let(:event) { FactoryBot.create(:event) }
+      let(:event_type) { FactoryBot.create(:event_type) }
+      let(:event_type_id) { event_type.id }
+      let(:event) { FactoryBot.create(:event, event_type: event_type) }
       before { delete "/admin/events/#{event.id}" }
 
       it "destroys the event" do
