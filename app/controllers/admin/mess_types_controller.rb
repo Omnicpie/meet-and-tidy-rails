@@ -14,7 +14,7 @@ module Admin
       @mess_type = MessType.new(mess_type_params)
 
       if @mess_type.save
-        flash[:notice] = "Added new event type."
+        flash[:notice] = "Added new mess type."
         redirect_to admin_mess_types_path
       else
         render :new
@@ -26,7 +26,7 @@ module Admin
 
     def update
       if @mess_type.update(mess_type_params)
-        flash[:notice] = "Event type updated."
+        flash[:notice] = "Mess type updated."
         redirect_to admin_mess_types_path
       else
         render :edit
@@ -35,7 +35,7 @@ module Admin
 
     def destroy
       @mess_type.destroy
-      redirect_to admin_mess_types_path, notice: "Event type deleted."
+      redirect_to admin_mess_types_path, notice: "Mess type deleted."
     end
 
     private
