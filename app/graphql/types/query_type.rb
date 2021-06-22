@@ -101,5 +101,23 @@ module Types
         Mess.none
       end
     end
+
+  # facilities
+    field :facility, FacilityType, null: true do
+      description "Find a facility by ID"
+      argument :id, ID, required: true
+    end
+
+    def facility(id:)
+      Facility.find_by(id)
+    end
+
+    field :facilities, [FacilityType], null: true do
+      description "All facilities"
+    end
+
+    def facilities
+      Facility.all
+    end
   end
 end
