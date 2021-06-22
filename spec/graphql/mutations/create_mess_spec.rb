@@ -28,12 +28,10 @@ module Mutations
         )
       }
 
-      puts response.status
-      puts response.body
       expect(Mess.count).to eq 1
       mess = Mess.last
       expect(mess.description).to eq "Someone has left loads of rubbish on George Street"
-      expect(mess.messTypeId).to eq mess_type.id
+      expect(mess.mess_type_id).to eq mess_type.id
       expect(mess.location).to eq "George Street, Doncaster"
       expect(mess.title).to eq "Rubbish left on George Street"
     end
