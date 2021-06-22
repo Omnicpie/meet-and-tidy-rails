@@ -20,7 +20,7 @@ class Mutations::CreateEvent < Mutations::BaseMutation
       title: title,
       url: url,
     )
-    if event.save!
+    if event.save
       {
         errors: []
       }
