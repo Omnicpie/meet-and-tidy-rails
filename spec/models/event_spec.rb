@@ -3,7 +3,11 @@ require "rails_helper"
 RSpec.describe Event, type: :model do
   describe "Active Storage" do
     it { should have_many_attached :images }
+  end
+
+  describe "Associations" do
     it { should belong_to :event_type }
+    it { should have_and_belong_to_many :facilities }
   end
 
   describe "#to_s" do
