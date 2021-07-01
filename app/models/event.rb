@@ -7,6 +7,8 @@ class Event < ApplicationRecord
   # Associations
   belongs_to :event_type
   has_and_belongs_to_many :facilities
+  has_many :attendances
+  has_many :users, through: :attendances
 
   # Validations
   validates_presence_of :title
