@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   # Validations
   validates :name, presence: true
+
+  # Associations
+  has_many :attendances
+  has_many :events, through: :attendances
 end
