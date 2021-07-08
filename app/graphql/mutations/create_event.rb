@@ -9,6 +9,8 @@ class Mutations::CreateEvent < Mutations::BaseMutation
   argument :title, String, required: true
   argument :url, String, required: false
 
+  field :image_urls, [String], null: true
+
   field :errors, [String], null: false
 
   def resolve(date:, description:, event_type_id:, facility_ids:, location:, title:, url:)
