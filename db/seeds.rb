@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Administrator.destroy_all
+Attendance.destroy_all
 Event.destroy_all
 EventType.destroy_all
 Facility.destroy_all
@@ -27,13 +28,29 @@ puts "\n== Creating users =="
 User.create!(
   email: "morty@example.com",
   name: "Morty",
-  password: "secret123"
+  password: "secret123",
+  id: 1
 )
 
 User.create!(
   email: "pam@example.com",
   name: "Pam",
-  password: "secret123"
+  password: "secret123",
+  id: 2
+)
+
+User.create!(
+  email: "joe@example.com",
+  name: "Joe",
+  password: "secret123",
+  id: 3
+)
+
+User.create!(
+  email: "tim@example.com",
+  name: "Tim",
+  password: "secret123",
+  id:4
 )
 
 puts "\n== Creating event types =="
@@ -82,6 +99,7 @@ event_1 = Event.create!(
   event_type: event_type_a,
   description: "A chance to clean up our local streets and give back to the community.",
   facilities: [facility_a, facility_b],
+  id: 1,
   location: "Leeds",
   date: 11-06-2021,
   url: "https://www.google.com",
@@ -92,6 +110,7 @@ event_2 = Event.create!(
   event_type: event_type_c,
   description: "Time to do your part and clean up the beach!",
   facilities: [facility_a],
+  id: 2,
   location: "Redcar",
   date: 15-12-2021,
   url: "https://www.google.com",
@@ -102,6 +121,7 @@ event_3 = Event.create!(
   event_type: event_type_a,
   description: "A chance to clean up our local streets and give back to the community.",
   facilities: [facility_b],
+  id:3,
   location: "Goole",
   date: 23-9-2021,
   url: "https://www.google.com",
@@ -163,3 +183,30 @@ mess_1.save!
 mess_2.images.attach(io: File.open(path_for_image("fly_tip.jpg")), filename: "fly_tip.jpg")
 mess_2.save!
 
+# attendances
+puts "\n== handling attendance =="
+
+Attendance.create!(
+  event_id: 1,
+  user_id: 3
+)
+
+Attendance.create!(
+  event_id: 2,
+  user_id: 2
+)
+
+Attendance.create!(
+  event_id: 2,
+  user_id: 4
+)
+
+Attendance.create!(
+  event_id: 3,
+  user_id: 2
+)
+
+Attendance.create!(
+  event_id: 2,
+  user_id: 1
+)
