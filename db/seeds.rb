@@ -192,6 +192,11 @@ Attendance.create!(
 )
 
 Attendance.create!(
+  event_id: 1,
+  user_id: 2
+)
+
+Attendance.create!(
   event_id: 2,
   user_id: 2
 )
