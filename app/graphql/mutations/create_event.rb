@@ -4,7 +4,7 @@ class Mutations::CreateEvent < Mutations::BaseMutation
   argument :date, String, required: false
   argument :description, String, required: false
   argument :event_type_id, ID, required: true
-  argument :facility_ids, [ID], required: true
+  argument :facility_ids,[ID], required: true
   argument :location, String, required: false
   argument :title, String, required: true
   argument :url, String, required: false
@@ -18,7 +18,7 @@ class Mutations::CreateEvent < Mutations::BaseMutation
       date: date,
       description: description,
       event_type_id: event_type_id,
-#      facility_id: facility_id,
+      facility_ids: facility_ids,
       location: location,
       title: title,
       url: url,
