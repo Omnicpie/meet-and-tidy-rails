@@ -14,11 +14,12 @@ class Mutations::CreateEvent < Mutations::BaseMutation
   field :errors, [String], null: false
 
   def resolve(date:, description:, event_type_id:, facility_ids:, location:, title:, url:)
+    Rails.logger.info("Facility IDS:")
+    Rails.logger.info(facility_ids)
     event = Event.new(
       date: date,
       description: description,
       event_type_id: event_type_id,
-      facility_ids: facility_ids,
       location: location,
       title: title,
       url: url,
