@@ -74,25 +74,27 @@ RSpec.describe "Users admin", type: :request do
 
   describe "PATCH /admin/users/:id" do
     context "with valid params" do
-      before do
-        @user = FactoryBot.create(
-          :user, email: "alex@example.com", name: "Alex",
-        )
+      let(:user) { FactoryBot.create(:user, email: "alex@example.com", name: "Alex") }
+
+      it "updates the user" do
         patch(
-          "/admin/users/#{@user.id}",
+          "/admin/users/#{user.id}",
           params: {
             user: {email: "alexandra@example.com", name: "Alexandra"}
           }
         )
-      end
-
-      it "updates the user" do
-        @user.reload
-        expect(@user.email).to eq "alexandra@example.com"
-        expect(@user.name).to eq "Alexandra"
+        user.reload
+        expect(user.name).to eq "Alexandra"
+        expect(user.email).to eq "alexandra@example.com"
       end
 
       it "redirects to admin users path" do
+        patch(
+          "/admin/users/#{user.id}",
+          params: {
+            user: {email: "alexandra@example.com", name: "Alexandra"}
+          }
+        )
         expect(response).to redirect_to admin_users_path
       end
     end
