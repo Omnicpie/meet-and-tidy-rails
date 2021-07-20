@@ -5,6 +5,7 @@ class Mutations::CreateEvent < Mutations::BaseMutation
   argument :description, String, required: false
   argument :event_type_id, ID, required: true
   argument :facility_ids,[ID], required: true
+  argument :image_base64, String, required: false
   argument :location, String, required: false
   argument :title, String, required: true
   argument :url, String, required: false
@@ -13,7 +14,7 @@ class Mutations::CreateEvent < Mutations::BaseMutation
 
   field :errors, [String], null: false
 
-  def resolve(date:, description:, event_type_id:, facility_ids:, location:, title:, url:)
+  def resolve(date:, description:, event_type_id:, facility_ids:, image_base64:, location:, title:, url:)
     Rails.logger.info("Facility IDS:")
     Rails.logger.info(facility_ids)
     event = Event.new(
@@ -38,5 +39,12 @@ class Mutations::CreateEvent < Mutations::BaseMutation
         errors: event.errors.full_messages
       }
     end
+    decoded_data = Base64.decode64(image_base64)
+
+    event.images.attach({
+      io: StringIO.new(decoded_data),
+      content_type: "image/jpeg",
+      filename: "image.jpg"
+    })
   end
 end
