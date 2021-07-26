@@ -7,7 +7,7 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
 
-  # events
+    # events
     field :event, EventType, null: true do
       description "Find an event by ID"
       argument :id, ID, required: true
@@ -25,25 +25,6 @@ module Types
       Event.all
     end
 
-  # event types
-    field :event_type, EventTypeType, null: true do
-      description "Find a event type by name"
-      argument :id, ID, required: true
-    end
-
-    def event_type(id:)
-      EventType.find_by(name: "Park")
-    end
-
-    field :event_types, [EventTypeType], null: true do
-      description "All event types"
-    end
-
-    def event_types
-      ::EventType.all
-    end
-
-  # event search
     field :search_events, [EventType], null: false do
       description "Events matching query"
       argument :location, String, required: true
@@ -66,7 +47,25 @@ module Types
       end
     end
 
-  # messes
+    # event types
+    field :event_type, EventTypeType, null: true do
+      description "Find a event type by name"
+      argument :id, ID, required: true
+    end
+
+    def event_type(id:)
+      EventType.find_by(name: "Park")
+    end
+
+    field :event_types, [EventTypeType], null: true do
+      description "All event types"
+    end
+
+    def event_types
+      ::EventType.all
+    end
+
+    # messes
     field :mess, MessType, null: true do
       description "Find an mess by ID"
       argument :id, ID, required: true
@@ -84,7 +83,7 @@ module Types
       Mess.all
     end
 
-  # mess types
+    # mess types
     field :mess_type, MessTypeType, null: true do
       description "Find a mess type by name"
       argument :id, ID, required: true
@@ -102,7 +101,7 @@ module Types
       ::MessType.all
     end
 
-  # search mess
+    # search mess
     def search_messes(query:)
       if query.strip.length > 1
         Mess.where("title LIKE ?", "%#{query}%").order(created_at: :desc).limit(100)
@@ -111,7 +110,7 @@ module Types
       end
     end
 
-  # facilities
+    # facilities
     field :facility, FacilityType, null: true do
       description "Find a facility by ID"
       argument :id, ID, required: true
