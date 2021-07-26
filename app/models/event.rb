@@ -10,7 +10,12 @@ class Event < ApplicationRecord
   has_many :attendances
   has_many :users, through: :attendances
 
+  # Geocoder
+  geocoded_by :location
+  after_validation :geocode
+
   # Validations
+  validates_presence_of :location
   validates_presence_of :title
 
   def to_s

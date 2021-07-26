@@ -31,6 +31,9 @@ gem "rack-cors"
 # GraphQL for API
 gem "graphql"
 
+# Geolocation for events and messes
+gem 'geocoder'
+
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 

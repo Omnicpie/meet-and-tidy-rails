@@ -12,6 +12,11 @@ RSpec.describe Event, type: :model do
     it { should have_many(:users).through(:attendances) }
   end
 
+  describe "Validations" do
+    it { should validate_presence_of :location }
+    it { should validate_presence_of :title }
+  end
+
   describe "#to_s" do
     it "returns its title" do
       expect(Event.new(title: "Locke Park Cleanup").to_s).to eq "Locke Park Cleanup"
