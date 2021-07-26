@@ -59,7 +59,7 @@ RSpec.describe "Users admin", type: :request do
   describe "GET /admin/users/:id/edit" do
     let(:user) { FactoryBot.create(:user) }
 
-    it "renders a form to edit the mess" do
+    it "renders a form to edit the user" do
       get "/admin/users/#{user.id}/edit"
       assert_select "form[action='#{admin_user_path(user)}']"
     end

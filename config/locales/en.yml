@@ -38,9 +38,6 @@ en:
       facility:
         one: "Facility"
         other: "Facilities"
-      mess:
-        one: "Mess"
-        other: "Messes"
       user:
         one: "User"
         other: "Users"
