@@ -23,32 +23,28 @@ Administrator.create!(
 
 puts "\n== Creating users =="
 
-User.create!(
+user_1 = User.create!(
   email: "morty@example.com",
   name: "Morty",
-  password: "secret123",
-  id: 1
+  password: "secret123"
 )
 
-User.create!(
+user_2 = User.create!(
   email: "pam@example.com",
   name: "Pam",
-  password: "secret123",
-  id: 2
+  password: "secret123"
 )
 
-User.create!(
+user_3 = User.create!(
   email: "joe@example.com",
   name: "Joe",
-  password: "secret123",
-  id: 3
+  password: "secret123"
 )
 
-User.create!(
+user_4 = User.create!(
   email: "tim@example.com",
   name: "Tim",
-  password: "secret123",
-  id:4
+  password: "secret123"
 )
 
 puts "\n== Creating event types =="
@@ -101,7 +97,6 @@ event_1 = Event.create!(
   event_type: event_type_a,
   description: "A chance to clean up our local streets and give back to the community.",
   facilities: [facility_a, facility_b],
-  id: 1,
   date: 11-06-2021,
   location: "Sheffield, UK",
   url: "https://www.google.com"
@@ -112,7 +107,6 @@ event_2 = Event.create!(
   event_type: event_type_c,
   description: "Time to do your part and clean up the beach!",
   facilities: [facility_a],
-  id: 2,
   date: 15-12-2021,
   location: "Doncaster, UK",
   url: "https://www.google.com"
@@ -123,7 +117,6 @@ event_3 = Event.create!(
   event_type: event_type_a,
   description: "A chance to clean up our local streets and give back to the community.",
   facilities: [facility_b],
-  id:3,
   date: 23-9-2021,
   location: "Leeds, UK",
   url: "https://www.google.com"
@@ -156,31 +149,31 @@ event_3.save!
 puts "\n== handling attendance =="
 
 Attendance.create!(
-  event_id: 1,
-  user_id: 3
+  event: event_1,
+  user: user_3
 )
 
 Attendance.create!(
-  event_id: 1,
-  user_id: 2
+  event: event_2,
+  user: user_2
 )
 
 Attendance.create!(
-  event_id: 2,
-  user_id: 2
+  event: event_3,
+  user: user_2
 )
 
 Attendance.create!(
-  event_id: 2,
-  user_id: 4
+  event: event_2,
+  user: user_4
 )
 
 Attendance.create!(
-  event_id: 3,
-  user_id: 2
+  event: event_3,
+  user: user_2
 )
 
 Attendance.create!(
-  event_id: 2,
-  user_id: 1
+  event: event_2,
+  user: user_1
 )
