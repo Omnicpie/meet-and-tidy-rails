@@ -46,12 +46,17 @@ module Types
   # event search
     field :search_events, [EventType], null: false do
       description "Events matching query"
-      argument :query, String, required: true
+      argument :location, String, required: true
+      argument :title, String, required: true
     end
 
-    def search_events(query:)
-      if query.strip.length > 1
-        Event.where("title LIKE ?", "%#{query}%").order(starts_at: :desc).limit(100)
+    def search_events(location:, title:)
+      if title.strip.length > 1
+        Event
+          .near(location, 200)
+          .where("title LIKE ?", "%#{title}%")
+          .order(starts_at: :desc)
+          .limit(100)
       else
         Event.none
       end
