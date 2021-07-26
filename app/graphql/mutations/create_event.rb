@@ -1,12 +1,12 @@
 class Mutations::CreateEvent < Mutations::BaseMutation
   null true
 
-  argument :date, String, required: false
   argument :description, String, required: false
   argument :event_type_id, ID, required: true
   argument :facility_ids,[ID], required: true
   argument :image_base64, String, required: false
   argument :location, String, required: false
+  argument :starts_at, String, required: false
   argument :title, String, required: true
   argument :url, String, required: false
 
@@ -14,12 +14,12 @@ class Mutations::CreateEvent < Mutations::BaseMutation
 
   field :errors, [String], null: false
 
-  def resolve(date:, description:, event_type_id:, facility_ids:, image_base64:, location:, title:, url:)
+  def resolve(description:, event_type_id:, facility_ids:, image_base64:, location:, starts_at:, title:, url:)
     event = Event.new(
-      date: date,
       description: description,
       event_type_id: event_type_id,
       location: location,
+      starts_at: starts_at,
       title: title,
       url: url,
     )

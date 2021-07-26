@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 Administrator.destroy_all
 Attendance.destroy_all
 Event.destroy_all
@@ -97,7 +89,7 @@ event_1 = Event.create!(
   event_type: event_type_a,
   description: "A chance to clean up our local streets and give back to the community.",
   facilities: [facility_a, facility_b],
-  date: 11-06-2021,
+  starts_at: DateTime.current + 1.day,
   location: "Sheffield, UK",
   url: "https://www.google.com"
 )
@@ -107,7 +99,7 @@ event_2 = Event.create!(
   event_type: event_type_c,
   description: "Time to do your part and clean up the beach!",
   facilities: [facility_a],
-  date: 15-12-2021,
+  starts_at: DateTime.current + 1.day,
   location: "Doncaster, UK",
   url: "https://www.google.com"
 )
@@ -117,7 +109,7 @@ event_3 = Event.create!(
   event_type: event_type_a,
   description: "A chance to clean up our local streets and give back to the community.",
   facilities: [facility_b],
-  date: 23-9-2021,
+  starts_at: DateTime.current + 2.days,
   location: "Leeds, UK",
   url: "https://www.google.com"
 )
@@ -127,8 +119,7 @@ mess_1 = Event.create!(
   event_type: event_type_d,
   description: "Someone has left all their rubbish on George Street and it needs cleaning up.",
   location: "York, UK",
-  starts_at: DateTime.current + 2.days,
-  url: "https://www.google.com"
+  mess: true
 )
 
 puts "\n== handling active images =="
