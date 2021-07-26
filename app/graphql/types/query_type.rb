@@ -47,13 +47,17 @@ module Types
     field :search_events, [EventType], null: false do
       description "Events matching query"
       argument :location, String, required: true
+      argument :radius, Integer, required: true
       argument :title, String, required: true
     end
 
-    def search_events(location:, title:)
+    def search_events(location:, radius:, title:)
+      if radius == 0
+        radius = 200
+      end
       if title.strip.length > 1
         Event
-          .near(location, 200)
+          .near(location, radius)
           .where("title LIKE ?", "%#{title}%")
           .order(starts_at: :desc)
           .limit(100)

@@ -8,6 +8,7 @@
       <thead>
         <tr>
           <th><%= Event.human_attribute_name :title %></th>
+          <th><%= Event.human_attribute_name :location %></th>
           <th></th>
         </tr>
       </thead>
@@ -15,6 +16,7 @@
         <% @events.each do |event| %>
           <tr>
             <td><%= event %></td>
+            <td><%= event.location %></td>
             <td>
               <div class="buttons">
                 <%= link_to t("edit"), edit_admin_event_path(event), class: "button is-small" %>
