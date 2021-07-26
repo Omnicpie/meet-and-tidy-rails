@@ -100,9 +100,8 @@ event_1 = Event.create!(
   description: "A chance to clean up our local streets and give back to the community.",
   facilities: [facility_a, facility_b],
   id: 1,
-  location: "Leeds",
   date: 11-06-2021,
-  url: "https://www.google.com",
+  url: "https://www.google.com"
 )
 
 event_2 = Event.create!(
@@ -111,9 +110,8 @@ event_2 = Event.create!(
   description: "Time to do your part and clean up the beach!",
   facilities: [facility_a],
   id: 2,
-  location: "Redcar",
   date: 15-12-2021,
-  url: "https://www.google.com",
+  url: "https://www.google.com"
 )
 
 event_3 = Event.create!(
@@ -122,9 +120,8 @@ event_3 = Event.create!(
   description: "A chance to clean up our local streets and give back to the community.",
   facilities: [facility_b],
   id:3,
-  location: "Goole",
   date: 23-9-2021,
-  url: "https://www.google.com",
+  url: "https://www.google.com"
 )
 
 # puts "\n== Creating mess types =="
@@ -154,15 +151,13 @@ puts "\n== Creating messes =="
 mess_1 = Mess.create!(
   title: "Bin bags on George St",
   mess_type: mess_type_b,
-  description: "Someone has left all their rubbish on George Street and it needs cleaning up.",
-  location: "George Street"
+  description: "Someone has left all their rubbish on George Street and it needs cleaning up."
 )
 
 mess_2 = Mess.create!(
   title: "Fly-tip in alley",
   mess_type: mess_type_a,
-  description: "Massive fly-tip on the alley between Carilse and Smitth street.",
-  location: "Doncaster"
+  description: "Massive fly-tip on the alley between Carilse and Smitth street."
 )
 
 puts "\n== handling active images =="

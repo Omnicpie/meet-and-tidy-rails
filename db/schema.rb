@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_01_090857) do
+ActiveRecord::Schema.define(version: 2021_07_26_101717) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(version: 2021_07_01_090857) do
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "location"
     t.datetime "date"
     t.bigint "event_type_id", null: false
     t.index ["event_type_id"], name: "index_events_on_event_type_id"
@@ -110,7 +109,6 @@ ActiveRecord::Schema.define(version: 2021_07_01_090857) do
   create_table "messes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
     t.string "description"
-    t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "mess_type_id", null: false
