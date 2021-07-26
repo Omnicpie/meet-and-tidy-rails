@@ -73,6 +73,10 @@ event_type_c = EventType.create!(
   name: "Beach"
 )
 
+event_type_d = EventType.create!(
+  name: "Fly-tipping"
+)
+
 puts "\n== Creating facilities =="
 
 Facility.create!([
@@ -122,6 +126,15 @@ event_3 = Event.create!(
   id:3,
   date: 23-9-2021,
   location: "Leeds, UK",
+  url: "https://www.google.com"
+)
+
+mess_1 = Event.create!(
+  title: "Bin bags on George St",
+  event_type: event_type_d,
+  description: "Someone has left all their rubbish on George Street and it needs cleaning up.",
+  location: "York, UK",
+  starts_at: DateTime.current + 2.days,
   url: "https://www.google.com"
 )
 
