@@ -65,51 +65,6 @@ module Types
       ::EventType.all
     end
 
-    # messes
-    field :mess, MessType, null: true do
-      description "Find an mess by ID"
-      argument :id, ID, required: true
-    end
-
-    def mess(id:)
-      Mess.find(id)
-    end
-
-    field :messes, [MessType], null: true do
-      description "All messes"
-    end
-
-    def messes
-      Mess.all
-    end
-
-    # mess types
-    field :mess_type, MessTypeType, null: true do
-      description "Find a mess type by name"
-      argument :id, ID, required: true
-    end
-
-    def mess_type(id:)
-      MessType.find_by(name: "Park")
-    end
-
-    field :mess_types, [MessTypeType], null: true do
-      description "All mess types"
-    end
-
-    def mess_types
-      ::MessType.all
-    end
-
-    # search mess
-    def search_messes(query:)
-      if query.strip.length > 1
-        Mess.where("title LIKE ?", "%#{query}%").order(created_at: :desc).limit(100)
-      else
-        Mess.none
-      end
-    end
-
     # facilities
     field :facility, FacilityType, null: true do
       description "Find a facility by ID"

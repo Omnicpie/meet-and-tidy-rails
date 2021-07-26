@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_26_102835) do
+ActiveRecord::Schema.define(version: 2021_07_26_131457) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2021_07_26_102835) do
     t.float "latitude"
     t.float "longitude"
     t.text "location"
+    t.boolean "mess", default: false, null: false
     t.index ["event_type_id"], name: "index_events_on_event_type_id"
   end
 
@@ -101,24 +102,6 @@ ActiveRecord::Schema.define(version: 2021_07_26_102835) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "mess_types", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "messes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "title", null: false
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "mess_type_id", null: false
-    t.float "latitude"
-    t.float "longitude"
-    t.text "location"
-    t.index ["mess_type_id"], name: "index_messes_on_mess_type_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

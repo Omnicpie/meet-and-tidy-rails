@@ -3,6 +3,5 @@ module Types
     field :create_account, mutation: Mutations::CreateAccount
     field :create_attendance, mutation: Mutations::CreateAttendance
     field :create_event, mutation: Mutations::CreateEvent
-    field :create_mess, mutation: Mutations::CreateMess
   end
 end

@@ -11,8 +11,6 @@ Attendance.destroy_all
 Event.destroy_all
 EventType.destroy_all
 Facility.destroy_all
-Mess.destroy_all
-MessType.destroy_all
 User.destroy_all
 
 puts "\n== Creating admins =="
@@ -81,7 +79,7 @@ Facility.create!([
   {name: "Toilets"},
   {name: "Parking"},
   {name: "First aiders"},
-  {name: "Transport routes"},
+  {name: "Transport routes"}
 ])
 
 facility_a = Facility.create!(
@@ -127,44 +125,6 @@ event_3 = Event.create!(
   url: "https://www.google.com"
 )
 
-# puts "\n== Creating mess types =="
-
-# MessType.create!([
-#   {name: "Canal"},
-#   {name: "Cemetery"},
-#   {name: "Other"},
-#   {name: "Street"},
-#   {name: "Woodland"}
-# ])
-
-mess_type_a = MessType.create!(
-  name: "Fly-tip"
-)
-
-mess_type_b = MessType.create!(
-  name: "Rubbish"
-)
-
-mess_type_c = MessType.create!(
-  name: "Other"
-)
-
-puts "\n== Creating messes =="
-
-mess_1 = Mess.create!(
-  title: "Bin bags on George St",
-  mess_type: mess_type_b,
-  description: "Someone has left all their rubbish on George Street and it needs cleaning up.",
-  location: "York, UK"
-)
-
-mess_2 = Mess.create!(
-  title: "Fly-tip in alley",
-  mess_type: mess_type_a,
-  description: "Massive fly-tip on the alley between Carilse and Smitth street.",
-  location: "Rotherham, UK"
-)
-
 puts "\n== handling active images =="
 
 def path_for_image(filename)
@@ -178,10 +138,6 @@ event_2.images.attach(io: File.open(path_for_image("redcar.jpg")), filename: "re
 event_2.save!
 event_3.images.attach(io: File.open(path_for_image("west_park.jpg")), filename: "west_park.jpg")
 event_3.save!
-mess_1.images.attach(io: File.open(path_for_image("rubbish.jpg")), filename: "rubbish.jpg")
-mess_1.save!
-mess_2.images.attach(io: File.open(path_for_image("fly_tip.jpg")), filename: "fly_tip.jpg")
-mess_2.save!
 
 # attendances
 puts "\n== handling attendance =="
