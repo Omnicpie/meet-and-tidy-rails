@@ -90,7 +90,7 @@ event_1 = Event.create!(
   description: "A chance to clean up our local streets and give back to the community.",
   facilities: [facility_a, facility_b],
   starts_at: DateTime.current + 1.day,
-  location: "Sheffield, UK",
+  location: "Sheffield",
   url: "https://www.google.com"
 )
 
@@ -100,7 +100,7 @@ event_2 = Event.create!(
   description: "Time to do your part and clean up the beach!",
   facilities: [facility_a],
   starts_at: DateTime.current + 1.day,
-  location: "Doncaster, UK",
+  location: "Doncaster",
   url: "https://www.google.com"
 )
 
@@ -110,7 +110,7 @@ event_3 = Event.create!(
   description: "A chance to clean up our local streets and give back to the community.",
   facilities: [facility_b],
   starts_at: DateTime.current + 2.days,
-  location: "Leeds, UK",
+  location: "Leeds",
   url: "https://www.google.com"
 )
 
@@ -118,7 +118,7 @@ mess_1 = Event.create!(
   title: "Bin bags on George St",
   event_type: event_type_d,
   description: "Someone has left all their rubbish on George Street and it needs cleaning up.",
-  location: "York, UK",
+  location: "York",
   mess: true
 )
 

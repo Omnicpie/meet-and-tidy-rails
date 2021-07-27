@@ -11,12 +11,16 @@ class Event < ApplicationRecord
   has_many :users, through: :attendances
 
   # Geocoder
-  geocoded_by :location
+  geocoded_by :formatted_location
   after_validation :geocode
 
   # Validations
   validates_presence_of :location
   validates_presence_of :title
+
+  def formatted_location
+    "#{location}, UK"
+  end
 
   def to_s
     title

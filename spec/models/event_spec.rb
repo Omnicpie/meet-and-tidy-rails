@@ -17,6 +17,13 @@ RSpec.describe Event, type: :model do
     it { should validate_presence_of :title }
   end
 
+  describe "#formatted_location" do
+    it "returns location appended with ',UK'" do
+      event = Event.new(title: "Locke Park Cleanup", location: "Doncaster")
+      expect(event.formatted_location).to eq "Doncaster, UK"
+    end
+  end
+
   describe "#to_s" do
     it "returns its title" do
       expect(Event.new(title: "Locke Park Cleanup").to_s).to eq "Locke Park Cleanup"
