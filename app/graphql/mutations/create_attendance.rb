@@ -9,7 +9,7 @@ class Mutations::CreateAttendance < Mutations::BaseMutation
   def resolve(user_id:, event_id:)
     attendance = Attendance.new(
       user_id: user_id,
-      event_id: event_id,
+      event_id: event_id
     )
     if attendance.save
       {

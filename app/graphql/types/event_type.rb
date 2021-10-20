@@ -14,4 +14,3 @@ module Types
     field :image_urls, [String], null: true
   end
 end
-

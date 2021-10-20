@@ -8,10 +8,10 @@ RSpec.describe "Events admin", type: :request do
   describe "GET /admin/events" do
     it "lists all events" do
       event_type_1 = FactoryBot.create(:event_type, name: "Park")
-      event_1 = FactoryBot.create(:event, title: "Locke Park Cleanup", event_type: event_type_1, location: "Sheffield, UK")
+      FactoryBot.create(:event, title: "Locke Park Cleanup", event_type: event_type_1, location: "Sheffield, UK")
 
       event_type_2 = FactoryBot.create(:event_type, name: "Beach")
-      event_2 = FactoryBot.create(:event, title: "Cleethorpes Beach Cleanup", event_type: event_type_2, location: "Rotherham, UK")
+      FactoryBot.create(:event, title: "Cleethorpes Beach Cleanup", event_type: event_type_2, location: "Rotherham, UK")
 
       get "/admin/events"
       expect(response.body).to include("Locke Park Cleanup")
@@ -39,7 +39,7 @@ RSpec.describe "Events admin", type: :request do
         title: "Copley Road Litterpick",
         url: "https://friendsofcopleyroad.example.org",
         location: "York, UK",
-        event_type_id: event_type.id,
+        event_type_id: event_type.id
       }
     end
 
@@ -89,7 +89,7 @@ RSpec.describe "Events admin", type: :request do
         event_type = FactoryBot.create(:event_type)
 
         @event = FactoryBot.create(
-          :event, description: "Old desc", title: "Locke Park Cleanup", event_type_id: event_type.id,
+          :event, description: "Old desc", title: "Locke Park Cleanup", event_type_id: event_type.id
         )
         patch(
           "/admin/events/#{@event.id}",

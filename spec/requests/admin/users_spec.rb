@@ -32,7 +32,7 @@ RSpec.describe "Users admin", type: :request do
       {
         email: "alex@example.com",
         name: "Alex",
-        password: "secret123",
+        password: "secret123"
       }
     end
 
@@ -133,5 +133,4 @@ RSpec.describe "Users admin", type: :request do
       end
     end
   end
-
 end

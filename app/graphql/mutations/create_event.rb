@@ -3,7 +3,7 @@ class Mutations::CreateEvent < Mutations::BaseMutation
 
   argument :description, String, required: false
   argument :event_type_id, ID, required: true
-  argument :facility_ids,[ID], required: true
+  argument :facility_ids, [ID], required: true
   argument :image_base64, String, required: false
   argument :location, String, required: false
   argument :starts_at, String, required: false
@@ -21,7 +21,7 @@ class Mutations::CreateEvent < Mutations::BaseMutation
       location: location,
       starts_at: starts_at,
       title: title,
-      url: url,
+      url: url
     )
     facility_ids.each do |facility_id|
       if (facility = Facility.find_by(id: facility_id))
