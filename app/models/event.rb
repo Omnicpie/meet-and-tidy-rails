@@ -27,6 +27,7 @@ class Event < ApplicationRecord
   end
 
   def image_urls
-    images.map { |img| url_for(img) if img.present? }.compact
+    # images.map { |img| url_for(img) if img.present? }.compact
+    images.map { |img| rails_blob_path(img, only_path: true) if img.present? }.compact
   end
 end
